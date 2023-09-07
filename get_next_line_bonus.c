@@ -80,9 +80,9 @@ char	*read_file(int fd, char *res)
 		byte_read = read(fd, buffer, BUFFER_SIZE);
 		if (byte_read == -1)
 		{
-			free(buffer);
-			free(res);
-			buffer = NULL;
+			free (buffer);
+			free (res);
+			res = NULL;
 			return (NULL);
 		}
 		buffer[byte_read] = 0;
@@ -99,7 +99,7 @@ char	*get_next_line(int fd)
 	static char	*buffer[OPEN_MAX];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer[fd] = read_file(fd, buffer[fd]);
 	if (!buffer[fd])
